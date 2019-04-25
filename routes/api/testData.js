@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const testController = require()
+const testController = require("../../controllers/testController");
 
 router.route("/")
-    .get(testController.findall)
+    .get(testController.findAll)
     .post(testController.create);
 
 router.route("/:id")
