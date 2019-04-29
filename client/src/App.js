@@ -10,6 +10,7 @@ import Home from './components/Home';
 import NoMatch from './components/NoMatch';
 import MyAppBar from './components/MyAppBar';
 import Portfolio from './pages/Portfolio';
+import SignUp from './pages/SignUp';
 
 class App extends Component {
   state = {
@@ -47,6 +48,7 @@ class App extends Component {
               <Route path="/" exact component={() => <Home values={values}/>} />
               <Route path="/UserForm" component={UserForm} />
               <Route path="/Portfolio" component={Portfolio} />
+              <Route path="/SignUp" component={SignUp} />
               <Route component={NoMatch} />
             </Switch>
           </Router>

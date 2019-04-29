@@ -20,7 +20,11 @@ export default class LinkSideBar extends Component {
                         <ListItem 
                             primaryText="Portfolio"
                             href="/Portfolio"
-                        /> 
+                        />
+                        <ListItem 
+                            primaryText="Sign Up"
+                            href="/SignUp"
+                        />  
                     </List>
                 </Paper>
             </Grid>
