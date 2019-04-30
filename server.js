@@ -18,7 +18,7 @@ app.use(routes);
 
 mongoose.connect(
     // process.env.MONGODB_URI || 
-    "mongodb://testUser:testpw1@ds147446.mlab.com:47446/working-title", { useNewUrlParser: true });
+    "mongodb://tests1:tests1@ds147446.mlab.com:47446/working-title", { useNewUrlParser: true });
 
 app.listen(PORT, function () {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
