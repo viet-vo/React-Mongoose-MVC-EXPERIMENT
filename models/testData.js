@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const dataSchema = new Schema({
-    username: { type: String, require: true },
-    password: { type: String, require: true }
+    username: { type: String, require: false },
+    password: { type: String, require: false },
+    date: { type: Date, default: Date.now }
 });
+
+const Test = mongoose.model("test", dataSchema);
+
+module.exports = Test;

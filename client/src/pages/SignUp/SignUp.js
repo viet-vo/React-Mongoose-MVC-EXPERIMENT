@@ -5,12 +5,16 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
-// import { List, ListItem } from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 
 export default class SignUp extends Component {
-    state = {
+    constructor() {
+      super();
+      this.state = {
+        data: [],
         username: "",
-        password: ""
+        password: "",
+      }
     }
 
     componentDidMount() {
@@ -20,10 +24,15 @@ export default class SignUp extends Component {
     loadTestData = () => {
         API.getTests()
         .then(res =>
-            this.setState({ tests: res.data, username: "", password: "" })
+            this.setState({ data: res.data, username: "", password: "" })
         )
         .catch(err => console.log(err));
     };
+
+    updateInput(event) {
+      const { id, value } = event.target;
+      this.setState({ [id]: value })
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -35,14 +44,14 @@ export default class SignUp extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.username && this.state.password) {
-            API.saveTest({
-                username: this.state.username,
-                password: this.state.password
-            })
-                .then(console.log("worked"))
-                .catch(err => console.log(err))
+          API.saveTest({
+            username: this.state.username,
+            password: this.state.password
+          })
+          .then(res => this.loadTestData())
+          .catch(err => console.log(err));
         }
-    }
+      }
 
   render() {
     return (
@@ -52,19 +61,18 @@ export default class SignUp extends Component {
         <Grid item xs={6}>
             <Paper>
                 <TextField 
+                    id="username"
                     value={this.state.username}
                     hintText="Create a username"
-                    floatingLableText="Create a Username"
-                    onChange={this.handleInputChange}
+                    onChange={this.updateInput.bind(this)}
                 />
                 <TextField 
+                    id="password"
                     value={this.state.password}
                     hintText="Create a password"
-                    floatingLableText="Create a Password"
-                    onChange={this.handleInputChange}
+                    onChange={this.updateInput.bind(this)}
                 />
                 <RaisedButton
-                    disabled={!(this.state.username && this.state.password)}
                     label="Continue"
                     primary={true}
                     style={style.button}
@@ -72,14 +80,15 @@ export default class SignUp extends Component {
                 />
             </Paper>
         </Grid>
-        {/* <Grid item xs={6}>
+        <Grid item xs={6}>
           <Paper>
-            {this.state.tests.length ? (
+            {this.state.data.length ? (
               <List>
-                {this.state.tests.map(test => (
+                {this.state.data.map(test => (
                   <ListItem 
+                    key={test._id}
                     primaryText={test.username}
-                    secondaryText={test.password}
+                    secondaryText={test._id}
                   />
                 ))}
               </List>
@@ -87,7 +96,7 @@ export default class SignUp extends Component {
               <h3>no results</h3>
             )}
           </Paper>
-        </Grid> */}
+        </Grid>
       </div>
     )
   }

@@ -8,6 +8,9 @@ export default {
         return axios.get("/api/testData/" + id);
     },
     saveTest: function(userData) {
-        return axios.post("/api/testData/");
+        return axios.post("/api/testData/", userData);
+    },
+    seedMe: function() {
+        return axios.post("/api/testData2/");
     }
 }

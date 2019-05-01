@@ -2,8 +2,18 @@ import React, { Component } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import { List, ListItem } from 'material-ui/List'
+import API from '../../utils/API'
 
 export default class LinkSideBar extends Component {
+    componentDidMount() {
+    }
+
+    seedMe = () => {
+        API.seedMe()
+        .then(console.log("seeded"))
+        .catch(err => console.log(err));
+    }
+
   render() {
     return (
         <Grid item xs={3}>
@@ -24,6 +34,10 @@ export default class LinkSideBar extends Component {
                         <ListItem 
                             primaryText="Sign Up"
                             href="/SignUp"
+                        /> 
+                        <ListItem 
+                            primaryText="Seed"
+                            onClick={this.seedMe}
                         />  
                     </List>
                 </Paper>
