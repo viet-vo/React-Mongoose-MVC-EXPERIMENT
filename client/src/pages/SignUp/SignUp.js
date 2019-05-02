@@ -73,6 +73,7 @@ export default class SignUp extends Component {
                     onChange={this.updateInput.bind(this)}
                 />
                 <RaisedButton
+                    disabled={!(this.state.username && this.state.password)}
                     label="Continue"
                     primary={true}
                     style={style.button}

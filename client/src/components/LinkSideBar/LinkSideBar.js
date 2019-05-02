@@ -36,8 +36,8 @@ export default class LinkSideBar extends Component {
                             href="/SignUp"
                         /> 
                         <ListItem 
-                            primaryText="Seed"
-                            onClick={this.seedMe}
+                            primaryText="UserSignUp"
+                            href="/UserSignUp"
                         />  
                     </List>
                 </Paper>

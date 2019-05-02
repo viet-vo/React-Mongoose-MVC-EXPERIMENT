@@ -7,10 +7,14 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
     "express": "^4.15.4",
+    "express-session": "^1.16.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
-    "oath": "^1.0.0"
+    "oath": "^1.0.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
