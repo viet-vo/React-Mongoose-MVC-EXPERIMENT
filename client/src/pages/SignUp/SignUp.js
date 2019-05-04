@@ -17,7 +17,7 @@ export default class SignUp extends Component {
       }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.loadTestData();
     }
 

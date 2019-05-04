@@ -12,5 +12,11 @@ export default {
     },
     seedMe: function() {
         return axios.post("/api/testData2/");
-    }
+    },
+    getUsers: function() {
+         return axios.get("/user/");
+    },
+    submitUser: function(userData) {
+        return axios.post("/user/", userData);
+    },
 }

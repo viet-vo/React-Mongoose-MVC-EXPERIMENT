@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: ""
     },
-    Email: {
+    username: {
       type: String,
       default: ""
     },
