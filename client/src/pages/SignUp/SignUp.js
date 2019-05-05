@@ -7,6 +7,9 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import { List, ListItem } from 'material-ui/List';
 
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(2);
+
 export default class SignUp extends Component {
     constructor() {
       super();
@@ -29,10 +32,10 @@ export default class SignUp extends Component {
         .catch(err => console.log(err));
     };
 
-    updateInput(event) {
+    updateInput = event => {
       const { id, value } = event.target;
       this.setState({ [id]: value })
-    }
+    };
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -42,16 +45,17 @@ export default class SignUp extends Component {
       };
 
     handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.username && this.state.password) {
-          API.saveTest({
-            username: this.state.username,
-            password: this.state.password
-          })
-          .then(res => this.loadTestData())
-          .catch(err => console.log(err));
-        }
-      }
+      event.preventDefault();
+
+      if (this.state.username && this.state.password) {
+        API.saveTest({
+          username: this.state.username,
+          password: bcrypt.hashSync(this.state.password, salt),
+        })
+        .then(res => this.loadTestData())
+        .catch(err => console.log(err));
+      };
+    };
 
   render() {
     return (
@@ -89,7 +93,7 @@ export default class SignUp extends Component {
                   <ListItem 
                     key={test._id}
                     primaryText={test.username}
-                    secondaryText={test._id}
+                    secondaryText={test.password}
                   />
                 ))}
               </List>
