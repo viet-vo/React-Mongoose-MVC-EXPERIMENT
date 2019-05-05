@@ -7,9 +7,9 @@ import RaisedButton from "material-ui/RaisedButton";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
-// TODO: compDidMount to check unique username
-
 export class UserSignUp extends Component {
+    // TODO protect password view
+    // TODO check to see if username is unique compared to other users
     state = {
         data: [],
         firstName: '',
@@ -25,11 +25,10 @@ export class UserSignUp extends Component {
     loadUsers = () => {
         API.getUsers()
         .then(res =>
-            this.setState({ data: res.data, firstName: '', lastName: '', username: '', password: '' })
+            this.setState({ data: res.data, firstName: '', lastName: '', username: '', password: '' }, console.log(res.data))
             )
         .catch(err => console.log(err));
-        console.log(this.state.data);
-    }
+    };
 
     updateInput = event => {
         const { id, value } = event.target;
@@ -43,7 +42,7 @@ export class UserSignUp extends Component {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 username: this.state.username,
-                password: this.state.password
+                password: this.state.password,
             })
             .then(res => this.loadUsers())
         }

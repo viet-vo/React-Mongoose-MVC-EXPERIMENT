@@ -27,7 +27,7 @@ function MyAppBar(props) {
             <HomeIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
-            Website
+            Viet Vo's Site
           </Typography>
         </Toolbar>
       </AppBar>

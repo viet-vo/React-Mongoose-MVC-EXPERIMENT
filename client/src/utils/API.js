@@ -14,9 +14,12 @@ export default {
         return axios.post("/api/testData2/");
     },
     getUsers: function() {
-         return axios.get("/user/");
+         return axios.get("/user/user/");
     },
     submitUser: function(userData) {
-        return axios.post("/user/", userData);
+        return axios.post("/user/user/", userData);
+    },
+    getUsersLogin: function() {
+        return axios.get("/user/login/");
     },
 }

@@ -36,9 +36,13 @@ export default class LinkSideBar extends Component {
                             href="/SignUp"
                         /> 
                         <ListItem 
-                            primaryText="UserSignUp"
+                            primaryText="User Sign Up"
                             href="/UserSignUp"
-                        />  
+                        />
+                        <ListItem 
+                            primaryText="User Login"
+                            href="/Login"
+                        />   
                     </List>
                 </Paper>
             </Grid>

@@ -5,19 +5,25 @@ import './App.css';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import Grid from '@material-ui/core/Grid';
 
-import UserForm from './components/UserForm';
-import UserSignUp from './pages/UserSignUp';
 import Home from './components/Home';
 import NoMatch from './components/NoMatch';
 import MyAppBar from './components/MyAppBar';
 import SignUp from './pages/SignUp';
+import UserForm from './components/UserForm';
+import UserSignUp from './pages/UserSignUp';
+import Login from './pages/Login';
+import User from './pages/UserPage';
 
 class App extends Component {
-  state = {}
-
+  state = {
+    data: [],
+    firstName: '',
+    lastName: '',
+    username: '',
+    isAuthed: false,
+  };
   render() {
-    const { customer } = this.state;
-    const values = { customer } 
+    let props = this.state;
     return (
       <MuiThemeProvider>
         <div>
@@ -25,10 +31,12 @@ class App extends Component {
           <Grid>
             <Router>
               <Switch>
-                <Route path="/" exact component={() => <Home values={values}/>} />
+                <Route path="/" exact component={() => <Home values={this.state.data}/>} />
                 <Route path="/UserForm" component={UserForm} />
                 <Route path="/UserSignUp" component={UserSignUp} />
                 <Route path="/SignUp" component={SignUp} />
+                <Route path="/Login" component={Login} />
+                <Route path="/User" component={() => <User {...props} isAuthed={this.state.data} />} />
                 <Route component={NoMatch} />
               </Switch>
             </Router>

@@ -7,8 +7,14 @@ const dataSchema = new Schema(
       type: String,
       require: false
     },
-    password: { type: String, require: false },
-    date: { type: Date, default: Date.now }
+    password: { 
+      type: String, 
+      require: false 
+    },
+    date: { 
+      type: Date, 
+      default: Date.now 
+    }
   },
   {
     versionKey: false

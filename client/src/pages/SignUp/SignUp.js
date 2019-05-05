@@ -24,7 +24,7 @@ export default class SignUp extends Component {
     loadTestData = () => {
         API.getTests()
         .then(res =>
-            this.setState({ data: res.data, username: "", password: "" })
+            this.setState({ data: res.data, username: "", password: "" }, console.log(res))
         )
         .catch(err => console.log(err));
     };

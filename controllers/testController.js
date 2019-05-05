@@ -35,34 +35,4 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    seed: function (req, res) {
-        db.TestData
-            .then(db.Book.insertMany(
-                [
-                {
-                    username: "Allen",
-                    password: "tests1",
-                    date: new Date(Date.now())
-                },
-                {
-                    username: "Brian",
-                    password: "tests2",
-                    date: new Date(Date.now())
-                },
-                {
-                    username: "Pat",
-                    password: "tests1",
-                    date: new Date(Date.now())
-                }
-            ]
-            ))
-            .then(data => {
-                console.log(data.result.n + "records inserted!");
-                process.exit(0);
-            })
-            .catch(err => {
-                console.error(err);
-                process.exit(1);
-            });
-    }
 };
