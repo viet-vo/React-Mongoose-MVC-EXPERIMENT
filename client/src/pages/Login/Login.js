@@ -15,7 +15,7 @@ export class Login extends Component {
     };
 
     componentDidMount = () => {
-        this.loadUsers();
+        // this.loadUsers();
     };
 
     loadUsers = () => {
@@ -25,6 +25,12 @@ export class Login extends Component {
             )
         .catch(err => console.log(err));
     };
+
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        API.
+    }
+
     render() {
         return (
         <div>

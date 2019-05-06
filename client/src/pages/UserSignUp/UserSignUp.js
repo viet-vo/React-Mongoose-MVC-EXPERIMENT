@@ -23,7 +23,7 @@ export class UserSignUp extends Component {
     };
 
     loadUsers = () => {
-        API.getUsers()
+        API.getUsersLogin()
         .then(res =>
             this.setState({ data: res.data, firstName: '', lastName: '', username: '', password: '' }, console.log(res.data))
             )
@@ -62,7 +62,6 @@ export class UserSignUp extends Component {
                 <Paper
                 style={{
                     width: '50%',
-                    
                     }}
                 >
                     <Typography variant="h5" component="h2" style={{margin: "1em"}}>

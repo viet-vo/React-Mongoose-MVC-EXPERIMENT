@@ -7,9 +7,6 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 import { List, ListItem } from 'material-ui/List';
 
-const bcrypt = require('bcryptjs');
-const salt = bcrypt.genSaltSync(2);
-
 export default class SignUp extends Component {
     constructor() {
       super();
@@ -50,7 +47,7 @@ export default class SignUp extends Component {
       if (this.state.username && this.state.password) {
         API.saveTest({
           username: this.state.username,
-          password: bcrypt.hashSync(this.state.password, salt),
+          password: this.state.password,
         })
         .then(res => this.loadTestData())
         .catch(err => console.log(err));

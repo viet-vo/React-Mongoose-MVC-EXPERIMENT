@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    getTests: function() {
-        return axios.get("/api/testData");
+    getTests: () => {
+        return axios.get("/api/testData/");
     },
     getTest: function(id) {
         return axios.get("/api/testData/" + id);
@@ -10,16 +10,16 @@ export default {
     saveTest: function(userData) {
         return axios.post("/api/testData/", userData);
     },
-    seedMe: function() {
-        return axios.post("/api/testData2/");
-    },
-    getUsers: function() {
+    getUsers: () => {
          return axios.get("/user/user/");
     },
     submitUser: function(userData) {
         return axios.post("/user/user/", userData);
     },
-    getUsersLogin: function() {
-        return axios.get("/user/login/");
+    getUsersLogin: () => {
+        return axios.get("/login/user/");
     },
+    checkAuth: (creds) => {
+        return axios.post("/auth/check/")
+    }
 }
