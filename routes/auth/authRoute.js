@@ -1,4 +1,7 @@
 const router = require("express").Router();
+const authController = require("../../controllers/loginController");
 
 router.route("/")
-    .post()
+    .post(authController.checkUserPass);
+
+module.exports = router;

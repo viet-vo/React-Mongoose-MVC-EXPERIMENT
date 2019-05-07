@@ -27,8 +27,8 @@ export class Login extends Component {
     };
 
     handleFormSubmit = (event) => {
-        event.preventDefault();
-        API.
+    //     event.preventDefault();
+    //     API.
     }
 
     render() {
