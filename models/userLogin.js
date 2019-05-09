@@ -33,8 +33,8 @@ UserSchema.methods.comparePassword = function (candidatePassword, next) {
     if (err) return next(err);
     next(null, isMatch)
   })
-}
+};
 
-const User = mongoose.model("login", UserSchema);
+const User = mongoose.model("users", UserSchema);
 
 module.exports = User;

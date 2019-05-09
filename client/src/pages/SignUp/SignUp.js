@@ -49,8 +49,8 @@ export default class SignUp extends Component {
           username: this.state.username,
           password: this.state.password,
         })
-        .then(res => this.loadTestData())
-        .catch(err => console.log(err));
+          .then(res => this.loadTestData())
+          .catch(err => console.log(err));
       };
     };
 

@@ -17,9 +17,9 @@ export default {
         return axios.post("/user/user/", userData);
     },
     getUsersLogin: () => {
-        return axios.get("/login/user/");
+        return axios.get("/auth/check/");
     },
     checkAuth: (creds) => {
-        return axios.post("/auth/check/")
-    }
+        return axios.post("/auth/check/", creds);
+    },
 }

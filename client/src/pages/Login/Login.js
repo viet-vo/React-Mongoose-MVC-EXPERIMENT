@@ -15,21 +15,36 @@ export class Login extends Component {
     };
 
     componentDidMount = () => {
-        // this.loadUsers();
+        this.loadUsers();
+        // todo Check if user is already logged in and redirects to home
     };
 
     loadUsers = () => {
-        API.getUsersLogin()
+        API.getUsers()
         .then(res => 
             this.setState({ data: res.data, username: '', password: '' }, console.log(res.data))
             )
         .catch(err => console.log(err));
     };
 
+    updateInput = event => {
+        const { id, value } = event.target;
+        this.setState({ [id]: value })
+    };
+
     handleFormSubmit = (event) => {
-    //     event.preventDefault();
-    //     API.
-    }
+        event.preventDefault();
+        console.log(this.state)
+        
+        if (this.state.username && this.state.password) {
+            API.checkAuth({
+                username: this.state.username,
+                password: this.state.password,
+            })
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        };
+    };
 
     render() {
         return (
@@ -53,24 +68,24 @@ export class Login extends Component {
                     <Divider />
                     <TextField 
                             id="username"
-                            // value={this.state.username}
+                            value={this.state.username}
                             hintText="Username"
-                            // onChange={this.updateInput.bind(this)}
+                            onChange={this.updateInput.bind(this)}
                     />
                     <Divider variant="middle" />
                     <TextField 
                             id="password"
-                            // value={this.state.password}
+                            value={this.state.password}
                             hintText="Password"
-                            // onChange={this.updateInput.bind(this)}
+                            onChange={this.updateInput.bind(this)}
                     />
                     <Divider />
                     <RaisedButton
-                            // disabled={!(this.state.firstName && this.state.lastName && this.state.username && this.state.password)}
+                            disabled={!(this.state.username && this.state.password)}
                             label="Submit"
                             primary={true}
                             style={{margin: 15}}
-                            // onClick={this.handleFormSubmit}
+                            onClick={this.handleFormSubmit}
                     />
                 </Paper>
             </Grid>

@@ -15,26 +15,26 @@ module.exports = {
   },
   checkUserPass: function(req, res) {
     const { username, password } = req.body;
-    db.UserLogin.findOne({ username }, function(req, user) {
+    db.UserLogin.findOne({ username }, function(err, user) {
       if (err) {
         console.error(err);
         res.status(500).json({
-          error: 'Internal error please try again'
+          error: 'Internal error please try again3'
         });
       } else if (!user) {
         res.status(401).json({
-          error: 'Incorrect email or password'
+          error: 'Incorrect email or password1'
         });
       } else {
         user.isCorrect(password, function(err, same) {
           if (err) {
             res.status(500).json({
-              error: 'Internal error please try again'
+              error: 'Internal error please try again4'
             });
           } else if (!same) {
               res.status(401)
                 .json({
-                    error: 'Incorrect email or password'
+                    error: 'Incorrect email or password2'
                 });
           } else {
               const payload = { username }
