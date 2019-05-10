@@ -11,6 +11,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
+  firstName: {
+    type: String,
+    default: ""
+  },
+  lastName: {
+    type: String,
+    default: ""
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false
+  },
 }, {
   versionKey: false
 });
@@ -35,6 +47,6 @@ UserSchema.methods.comparePassword = function (candidatePassword, next) {
   })
 };
 
-const User = mongoose.model("users", UserSchema);
+const User = mongoose.model("newUsers", UserSchema);
 
 module.exports = User;

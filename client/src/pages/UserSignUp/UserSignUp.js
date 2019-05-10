@@ -19,7 +19,7 @@ export class UserSignUp extends Component {
     };
 
     componentDidMount = () => {
-        this.loadUsers();
+        // this.loadUsers();
     };
 
     loadUsers = () => {
@@ -91,6 +91,7 @@ export class UserSignUp extends Component {
                     <Divider variant="middle" />
                     <TextField 
                         id="password"
+                        type="password"
                         value={this.state.password}
                         hintText="Create a Password"
                         onChange={this.updateInput.bind(this)}
