@@ -15,7 +15,7 @@ export class Login extends Component {
     };
 
     componentDidMount = () => {
-        this.loadUsers();
+        // this.loadUsers();
         // todo Check if user is already logged in and redirects to home
     };
 

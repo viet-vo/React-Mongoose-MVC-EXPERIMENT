@@ -5,6 +5,4 @@ router.route("/")
     .get(userController.findAll)
     .post(userController.create);
 
-// router
-
 module.exports = router;
